@@ -1,0 +1,91 @@
+<div class="mb-5">
+  <form name="buttons" method="POST" action="/">
+    <div
+      class="card mt-5 border-0 bg-transparent"
+      style="max-width: 540px;"
+      id="posts"
+    >
+      {{#unless games}}
+        <div
+          class="row g-0 position-relative border-0 text-light"
+          style="width: 1150px"
+        >
+          <div class="col-md-6 mb-md-0 p-md-4">
+            <img
+              src="https://media0.giphy.com/media/QrdXWoMFhnzl2Nl7v6/giphy.gif"
+              class="w-100"
+            />
+          </div>
+          <div class="col-md-6 p-4 ps-md-0">
+            <h5 class="mt-0">Аукцион для вашего Twitch канала.</h5>
+            <p>Теперь зрители могут голосовать за их любимые игры, просто
+              написав название в чате. После того, как игра будет распознана она
+              будет выведена на экран. Чем больше баллов у игры, тем выше её
+              рейтинг! 
+              <br />
+              Планы по проекту:
+              <br />
+              - Авторизация через twitch.
+              <br />
+              - Админка для стримера.
+              <br />
+              - Настройка кол-ва начисляемых баллов в зависимости от
+              длительности подписки на канал.
+              <br />
+              - Голосования только для подписчиков с boosty.
+              <br />
+              - Размещение проекта на хостинге.</p>
+          </div>
+        </div>
+      {{/unless}}
+      {{#each games}}
+        <div class="d-flex flex-row mb-3 g-0">
+          <div class="col-md-4">
+            <img
+              src="{{this.img}}"
+              class="rounded-start"
+              style="object-fit: cover; width:100%; height:100%"
+            />
+          </div>
+          <div class="col-md-8 border-0" style="width: 400px">
+            <div class="card-body position-relative">
+              <h6
+                class="card-title position-absolute top-0 start-0 ps-3 pt-1 fs-4 text-light"
+              >{{this.name}}</h6>
+              <a href="{{this.videoUrl}}" target="_blank"><img
+                  src="https://img.icons8.com/color/344/youtube-play.png"
+                  class=""
+                  style="width: 21px; position: absolute; right: 70px; bottom: 130px"
+                /></a>
+              <img
+                src="https://img.icons8.com/fluency/344/star.png"
+                class="position-absolute top-0 end-0 pt-2 me-5"
+                style="width:21px"
+                id="star"
+              />
+              <p
+                class="card-text position-absolute top-0 end-0 pe-3 pt-2 text-light"
+              >{{this.score}}</p>
+              <hr style="color:white" />
+              <p
+                class="card-text align-middle fs-6 text-light"
+                title="{{this.descriptionFull}}"
+              >{{this.description}}</p>
+            </div>
+          </div>
+
+          <div class="col-md-8 border-0" style="width: 700px">
+            <div class="card-body position-relative">
+              <h6
+                class="card-title position-absolute top-0 start-0 ps-3 pt-1 fs-4 text-light"
+              >Вписалось: {{this.userScore}}</h6>
+              <hr style="color:white" />
+              <p class="card-text align-middle text-light">Тут будут ники
+                проголосовавших..</p>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </form>
+</div>
